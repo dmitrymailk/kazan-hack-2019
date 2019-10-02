@@ -1,0 +1,393 @@
+html,
+body,
+#map,
+#root
+  width: 100%
+  height: 100%
+  padding: 0
+  margin: 0
+  overflow: hidden
+
+*
+  outline: none !important
+
+$backColor: linear-gradient(90deg, #2A28B9 0%, #1B1666 100%)
+
+.change-operator
+  position: fixed
+  top: 84px
+  left: 50px
+  display: flex
+  width: 270px
+  height: 40px
+  border-radius: 12px
+  &__operator
+    display: flex
+    align-items: center
+    width: 214px
+    background: #ffffff
+    border-radius: 12px 0 0 12px
+  &__logo
+    margin: 0 12px 0 17px
+  &__arrow
+    margin-left: 11px
+    background: $backColor
+    width: 45px
+    display: flex
+    align-items: center
+    justify-content: center
+    border-radius: 0 12px 12px 0
+    cursor: pointer
+  &__list
+    display: flex
+    flex-direction: column
+    position: absolute
+    top: 40px
+    width: 100px
+    z-index: 1000
+    .change-operator__operator
+      margin-top: 2px
+      height: 40px
+      cursor: pointer
+
+.available-connection
+  position: fixed
+  top: 134px
+  left: 50px
+  display: flex
+  height: 32px
+  width: 270px
+  justify-content: space-between
+  z-index: 50
+  &__item
+    width: 64px
+    height: 32px
+    display: flex
+    justify-content: center
+    align-items: center
+    border-radius: 12px
+    color: #333333
+    border: 1px solid #333333
+    cursor: pointer
+    &_active
+      background: $backColor
+      color: #ffffff
+      border: none
+
+.search-direction
+  position: fixed
+  right: 50px
+  top: 84px
+  width: 560px
+  height: 40px
+  display: none
+  justify-content: space-between
+  &__input
+    width: 488px
+    height: 100%
+    border: none
+    outline: none
+    border-radius: 12px 0 0 12px
+    padding: 0
+    padding-left: 16px
+  &__button
+    margin-left: 11px
+    background: $backColor
+    width: 45px
+    height: 100%
+    display: flex
+    align-items: center
+    justify-content: center
+    border-radius: 0 12px 12px 0
+    cursor: pointer
+
+.change-transport
+  position: fixed
+  left: 25vw
+  top: 84px
+  display: flex
+  width: 457px
+  height: 40px
+  justify-content: space-between
+  &__item
+    display: flex
+    width: 220px
+    align-items: center
+    justify-content: center
+    border-radius: 12px
+    border: 1px solid #333333
+    cursor: pointer
+    font-size: 14px
+    // background: #ffffff
+    &_active
+      background: $backColor
+      color: #ffffff
+      border: none
+    img
+      margin-right: 16px
+
+.search-route
+  position: fixed
+  display: flex
+  height: 233px
+  background: #FBFBFB
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.16)
+  border-radius: 33px
+  width: 895px
+  left: calc(50% - 447px)
+  flex-direction: column
+  align-items: center
+  transition-duration: 0.07s, 0.07s
+  transition-delay: 0.07s, 0s
+  &__first, &__last
+    border-radius: 12px
+    background: #ffffff
+    padding: 0
+    border: none
+    outline: none
+    padding-left: 16px
+    width: 257px
+  &__first
+    margin-right: 20px
+    box-shadow: 0px 7px 12px rgba(0, 0, 0, 0.07)
+  &__last
+    margin-right: 20px
+    box-shadow: 0px 7px 12px rgba(0, 0, 0, 0.07)
+  &__button
+    display: flex
+    align-items: center
+    justify-content: center
+    color: #ffffff
+    background: $backColor
+    width: 220px
+    border-radius: 12px
+    cursor: pointer
+  &__title
+    margin-top: 22px
+    display: flex
+    flex-direction: column
+    align-items: center
+    cursor: pointer
+  &-wrapper
+    margin-top: 26px
+    height: 40px
+    display: flex
+  &_disable
+    bottom: -160px
+    transition-duration: 0.07s, 0.07s
+    transition-delay: 0.07s, 0s
+  &_active
+    bottom: -70px
+    transition-duration: 0.07s, 0.07s
+    transition-delay: 0.01s, 0s
+
+.route-info
+  position: fixed
+  top: 158px
+  right: 50px
+  display: flex
+  flex-direction: column
+  width: 483px
+  height: 440px
+  background: #ffffff
+  border-radius: 18px
+  padding: 40px 0 0 64px
+  display: none
+  box-shadow: 0px 7px 12px rgba(0, 0, 0, 0.07)
+  &__title
+    font-size: 24px
+    span
+      font-weight: 600
+  &__operator
+    margin-top: 36px
+    span
+      font-weight: 600
+  &__road-type, &__duration
+    margin-top: 17px
+    span
+      font-weight: 600
+  &__connection-type
+    margin-top: 21px
+  &__close
+    position: absolute
+    right: 11px
+    top: 11px
+    cursor: pointer
+
+.connection-type
+  &__title
+    font-weight: 600
+    margin-top: 16px
+  &__indicator
+    display: flex
+    width: 319px
+    flex-direction: column
+    margin-top: 6px
+  &__container
+    display: flex
+    width: 100%
+    span
+      display: flex
+      height: 4px
+      width: 29px
+      // background: #cccccc
+      border-radius: 4px
+      margin-right: 1px
+    &-dist
+      justify-content: space-between
+      display: flex
+      margin-top: 3px
+      font-size: 14px
+  &__container.G-4
+    span
+      background: #824DFD
+  &__container.G-3
+    span
+      background: #00FF19
+  &__container.G-2
+    span
+      background: #DBFF00
+
+.connection-types
+  display: flex
+  width: 240px
+  height: 50px
+  align-items: center
+  justify-content: center
+  background: #ffffff
+  border-radius: 12px
+  &__item
+    display: flex
+    flex-direction: column
+    align-items: center
+    width: 36px
+    margin-right: 20px
+    font-weight: 600
+  &__item:last-child
+    margin: 0
+  &__item
+    span
+      display: flex
+      width: 36px
+      height: 12px
+      background: #cccccc
+      border-radius: 4px
+  &__item.G4
+    span
+      background: #824DFD
+  &__item.G3
+    span
+      background: #00FF19
+  &__item.G2
+    span
+      background: #DBFF00
+
+// customize yandex
+
+.ymaps-2-1-74-controls__toolbar_left
+  position: absolute
+  right: 595px
+  top: 72px
+  z-index: 10000
+  height: 100px
+  display: flex
+  width: 40px
+  box-shadow: 0px 7px 12px rgba(0, 0, 0, 0.07)
+
+.ymaps-2-1-74-searchbox__normal-layout
+  width: 553px !important
+
+.ymaps-2-1-74-searchbox__input-cell
+  width: 490px !important
+
+.ymaps-2-1-74-searchbox-list-button
+  display: none
+
+.ymaps-2-1-74-_focused
+  outline: none !important
+  box-shadow: none !important
+
+.ymaps-2-1-74-searchbox-input__input, .ymaps-2-1-74-searchbox-input, .ymaps-2-1-74-searchbox__input-cell
+  height: 40px
+  border-radius: 12px 0 0 12px !important
+
+.ymaps-2-1-74-searchbox__normal-layout:after
+  box-shadow: none !important
+
+.ymaps-2-1-74-searchbox-input
+  display: flex !important
+  align-items: center !important
+  margin-right: 16px
+  box-shadow: 0px 7px 12px rgba(0, 0, 0, 0.07)
+
+.ymaps-2-1-74-searchbox-button.ymaps-2-1-74-_pin_right.ymaps-2-1-74-user-selection-none
+  border-radius: 12px
+  height: 40px
+  display: flex
+  align-items: center
+  background: $backColor !important
+  color: #ffffff
+
+.ymaps-2-1-74-searchbox-list-button
+  display: none !important
+
+.mapUpdate
+  width: 32px
+  height: 32px
+  display: flex
+  background: $backColor
+  border-radius: 12px
+  color: #ffffff
+  position: fixed
+  right: 16px
+  bottom: 8px
+  align-items: center
+  cursor: pointer
+  justify-content: center
+
+  // header
+
+.header
+  position: fixed
+  top: 0
+  left: 0
+  height: 58px
+  background: #FFFFFF
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.16)
+  width: 100%
+  align-items: center
+  justify-content: center
+  display: flex
+
+  // popup
+
+.popup-review
+  z-index: 100000
+  display: flex
+  position: fixed
+  width: 100%
+  height: 100%
+  background: rgba(0, 0, 0, 0.4)
+  top: 0
+  right: 0
+  justify-content: center
+  align-items: center
+  // display: none
+  img
+    width: 895px
+    height: 483px
+    cursor: pointer
+
+.popup-button
+  position: fixed
+  right: 64px
+  bottom: 4px
+  border-radius: 50%
+  width: 47px
+  height: 47px
+  display: flex
+  align-items: center
+  justify-content: center
+  box-shadow: 0px 7px 12px rgba(0, 0, 0, 0.07)
+  background: #ffffff
+  cursor: pointer
